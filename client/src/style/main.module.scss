@@ -1,0 +1,46 @@
+$blue_link: #04b;
+
+// Login
+.login_page {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: antiquewhite;
+
+  .item_link {
+    color: $blue_link;
+  }
+}
+
+.login_title {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 22px;
+  text-align: center;
+  margin: 0;
+  color: #000;
+
+  margin-bottom: 25px;
+}
+
+.login_content {
+  width: 360px;
+  margin: 0 auto;
+}
+
+.login_auth {
+  position: relative;
+  width: 100%;
+  margin: 70px 0;
+  background-color: #fff;
+  transition: height 0.2s ease-in;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.login_auth__content {
+  margin-top: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 32px;
+}
