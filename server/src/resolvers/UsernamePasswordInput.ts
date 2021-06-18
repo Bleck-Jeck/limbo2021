@@ -7,4 +7,8 @@ export class UsernamePasswordInput {
   username: string;
   @Field()
   password: string;
+
+  // Проверка на подверждение
+  @Field()
+  password_confitm: string;
 }

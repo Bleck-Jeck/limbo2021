@@ -1,15 +1,8 @@
 import { UsernamePasswordInput } from "../resolvers/UsernamePasswordInput";
 
 export const validateRegister = (options: UsernamePasswordInput) => {
-  if (!options.email.includes("@")) {
-    return [
-      {
-        field: "email",
-        message: "Неверный Email",
-      },
-    ];
-  }
 
+  // userName
   if (options.username.length <= 2) {
     return [
       {
@@ -23,16 +16,36 @@ export const validateRegister = (options: UsernamePasswordInput) => {
     return [
       {
         field: "username",
-        message: "Не может включать @",
+        message: "Такое имя не подойдет",
+      },
+    ];
+  }
+  // Email
+
+  if (!options.email.includes("@")) {
+    return [
+      {
+        field: "email",
+        message: "Неверный Email",
       },
     ];
   }
 
+
+  // Password
   if (options.password.length <= 2) {
     return [
       {
         field: "password",
         message: "Минимум 2 символа",
+      },
+    ];
+  }
+  if (options.password.length != options.password_confitm.length) {
+    return [
+      {
+        field: "password_confitm",
+        message: "Пароль не совпадает",
       },
     ];
   }

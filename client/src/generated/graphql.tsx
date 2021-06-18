@@ -637,7 +637,6 @@ export const UpdatePostDocument = gql`
     title
     subtitle
     poster
-
     text
     textSnippet
   }

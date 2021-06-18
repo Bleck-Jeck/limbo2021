@@ -6,18 +6,20 @@ import { useRegisterMutation, MeQuery, MeDocument } from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMap";
 import { useRouter } from "next/router";
 import { withApollo } from "../utils/withApollo";
-import NextLink from "next/link";
+
 
 import classes from '../style/register.module.scss'
 
 
-
+import NextLink from "next/link";
 
 interface registerProps { }
 
 const Register: React.FC<registerProps> = ({ }) => {
   const router = useRouter();
+
   const [register] = useRegisterMutation();
+
   return (
     <div className={classes.main_container}>
       <aside className={classes.presintation}>Аниме шторм</aside>
@@ -27,9 +29,12 @@ const Register: React.FC<registerProps> = ({ }) => {
             <h1 className={classes.register_header}>Регистрация</h1>
             <div className={classes.register_form}>
               {/* Обработка даннных */}
+
               <Formik
-                initialValues={{ email: "", username: "", password: "" }}
+                initialValues={{ email: "", username: "", password: "", password_confitm: "" }}
+
                 onSubmit={
+
                   async (values, { setErrors }) => {
                     const response = await register({
                       variables: { options: values },
@@ -49,8 +54,7 @@ const Register: React.FC<registerProps> = ({ }) => {
                       // worked
                       router.push("/");
                     }
-                  }
-                }
+                  }}
               >
 
                 {({ isSubmitting }) => (
@@ -58,6 +62,8 @@ const Register: React.FC<registerProps> = ({ }) => {
 
 
                   <Form >
+
+
                     <InputField
                       name="username"
                       placeholder="Имя"
@@ -73,8 +79,20 @@ const Register: React.FC<registerProps> = ({ }) => {
                         placeholder="Пароль"
                         label="Введите пароль"
                         type="password"
+
                       />
                     </Box>
+                    <Box mt={4}>
+                      <InputField
+                        name="password_confitm"
+                        placeholder="Введите пароль еще раз"
+                        label="Повторите пароль"
+                        type="password"
+                      />
+                    </Box>
+
+
+
                     <Button
                       mt={4}
                       type="submit"
