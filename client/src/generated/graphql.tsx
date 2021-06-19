@@ -42,7 +42,7 @@ export type Post = {
   title: Scalars['String'];
   subtitle: Scalars['String'];
   poster: Scalars['String'];
-  // time_seria: Scalars['String'];
+
   text: Scalars['String'];
   points: Scalars['Float'];
   voteStatus?: Maybe<Scalars['Int']>;

@@ -1,12 +1,16 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Box, Button, Link } from "@chakra-ui/core";
+import { Box, Button, Link, InputGroup, InputRightElement } from "@chakra-ui/core";
+
 import { InputField } from "../components/InputField";
+
 import { useRegisterMutation, MeQuery, MeDocument } from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMap";
 import { useRouter } from "next/router";
 import { withApollo } from "../utils/withApollo";
 
+
+import { IconButton } from "@chakra-ui/core";
 
 import classes from '../style/register.module.scss'
 
@@ -19,6 +23,9 @@ const Register: React.FC<registerProps> = ({ }) => {
   const router = useRouter();
 
   const [register] = useRegisterMutation();
+
+  const [show, setShow] = React.useState(false)
+  const handleClick = () => setShow(!show)
 
   return (
     <div className={classes.main_container}>
@@ -74,20 +81,39 @@ const Register: React.FC<registerProps> = ({ }) => {
                       <InputField name="email" placeholder="Email" label="Введите Email" />
                     </Box>
                     <Box mt={4}>
-                      <InputField
-                        name="password"
-                        placeholder="Пароль"
-                        label="Введите пароль"
-                        type="password"
+                      <div className={classes.form_input}>
+                        <InputField
+                          name="password"
+                          placeholder="Пароль"
+                          label="Введите пароль"
+                          type={show ? "text" : "password"}
 
-                      />
+                        />
+
+                        <InputRightElement width="4.5rem">
+
+                          {show ? <IconButton onClick={handleClick} icon="view-off" /> : <IconButton onClick={handleClick} icon="view" />}
+
+                        </InputRightElement>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
                     </Box>
                     <Box mt={4}>
                       <InputField
                         name="password_confitm"
                         placeholder="Введите пароль еще раз"
                         label="Повторите пароль"
-                        type="password"
+                        type={show ? "text" : "password"}
                       />
                     </Box>
 

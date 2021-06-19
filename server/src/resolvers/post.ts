@@ -29,8 +29,6 @@ class PostInput {
   poster: string;
   @Field()
   text: string;
-  // @Field()
-  // time_seria: string;
 }
 
 @ObjectType()

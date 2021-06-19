@@ -7,7 +7,6 @@ mutation CreatePost($input: PostInput!) {
     subtitle
     poster
     text
-    # time_seria #add time
     points
     creatorId
   }
